@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'MedievalSharp', cursive;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url('For_the_Horde.jpg');
+    overflow: hidden;
+}
+ul{
+    margin-top: 10%;
+}
+ul::after {
+
+    content: "";
+    clear: both;
+}
+
+li {
+    padding: 25px;
+    list-style-type: none;
+    font-size: 2em;
+}
+
+li:hover {
+    animation: text-shadow 2s ease-in-out;
+    font-size: 4em;
+    font-weight: 600;
+    line-height: 1;
+}
+
+a {
+    margin-top: 10%;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(96, 96, 172);
+    /*border-bottom: 2px solid gold;*/
+    text-decoration: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}

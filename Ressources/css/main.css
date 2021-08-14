@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'MedievalSharp', cursive;
+}
+
+body {
+    background-image: url('fond.jpg');
+    background-size: cover;
+    background-size: 80%;
+    background-repeat: repeat-x;
+}
+
+#container {
+    width: 300%;
+    overflow: visible;
+}
+
+.Base1 {
+    position: absolute;
+    max-width: 500px;
+    bottom: 16%;
+    left: 3%;
+}
+
+.Base2 {
+    position: absolute;
+    max-width: 500px;
+    bottom: 16%;
+    left: 280%;
+}
+
+.AllyLife {
+    height: 100px;
+    width: 50%;
+    position: absolute;
+    top: 10%;
+    left: 2%;
+}
+
+.EnnemyLife {
+    height: 100px;
+    width: 50%;
+    position: absolute;
+    top: 10%;
+    left: 246%;
+}
+
+input {
+    border: none;
+    background-color: rgba(39, 37, 37, 0.555);
+}
+
+table, tr, td {
+    border: 1px solid gray;
+}
+
+#Caserne, #Archerie, #Ecurie, #Bucheron, #Ferme, #Or {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.mur {
+    background-image: url('mur.jpg');
+    background-repeat: repeat;
+}
+
+.Barracks {
+    z-index: 0;
+    position: absolute;
+    max-width: 500px;
+    bottom: 18%;
+    left: 45%;
+    height: 25%;
+}
+
+.Archery {
+    z-index: 1;
+    position: absolute;
+    max-width: 500px;
+    bottom: 13%;
+    left: 40%;
+    height: 25%;
+}
+
+.Stable {
+    z-index: 1;
+    position: absolute;
+    max-width: 500px;
+    bottom: 13%;
+    left: 53%;
+    height: 18%;
+}
+
+.Lumberjack {
+    z-index: 1;
+    position: absolute;
+    max-width: 500px;
+    bottom: 13%;
+    left: 28%;
+    height: 12%;
+}
+
+.Gold_mine {
+    z-index: 0;
+    position: absolute;
+    max-width: 500px;
+    bottom: 18%;
+    left: 20%;
+    height: 10%;
+}
+
+.Mill {
+    z-index: 0;
+    position: absolute;
+    max-width: 500px;
+    bottom: 18%;
+    left: 33%;
+    height: 20%;
+}

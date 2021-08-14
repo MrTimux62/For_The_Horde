@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>For The Horde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./Ressources/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./Ressources/css/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" onclick="giveWood()" href="#" style="text-align: center; color: burlywood;">Bois</a>
+                    <input type="text" id="WoodNav" placeholder="0" disabled style="text-align: center; color:whitesmoke">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="giveGold()" href="#" style="text-align: center; color: goldenrod;">Or</a>
+                    <input type="text" id="GoldNav" placeholder="0" disabled style="text-align: center; color:whitesmoke">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="giveFood()" href="#" style="text-align: center; color: red;">Nourritures</a>
+                    <input type="text" id="FoodNav" placeholder="0" disabled style="text-align: center; color:whitesmoke">
+                </li>
+                <li class="nav-item" style="margin-left:75%">
+                    <a class="nav-link " href="#" style="text-align: center; color:whitesmoke ;">Temps Restant</a>
+                    <input type="text" id="TimeNav" placeholder="30:00" disabled style="text-align: center; color:whitesmoke">
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: green;">Moral Haut</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: whitesmoke;">Unités 0/200</a>
+                </li>
+            </ul>
+        </form>
+    </nav>
+    <div id="container">
+        <p>&nbsp;</p>
+    </div>
+    <div id="AllyBuilding">
+        <div class="progress AllyLife ms-3" style="height: 50px; width: 50%;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated AllyLifejs fs-2" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">1000</div>
+        </div>
+        <img class="Base1" src="Pack Images/Chateau Bleu.png" alt="">
+    </div>
+    <div id="EnnemyBuilding">
+        <div class="progress EnnemyLife ms-3" style="height: 50px; width: 50%;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated EnnemyLifejs bg-danger fs-2" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">1000
+            </div>
+        </div>
+        <img class="Base2" src="Pack Images/Chateau Rouge.png" alt="">
+    </div>
+    <div id="allyBarracks">
+        <img class="Barracks" id="caserneBuild" src="Pack Images/Barracks.png" alt="" style="opacity: 0;">
+    </div>
+    <div id="allyArchery">
+        <img class="Archery" id="archerieBuild" src="Pack Images/Archery.png" alt="" style="opacity: 0;">
+    </div>
+    <div id="allyStable">
+        <img class="Stable" id="ecurieBuild" src="Pack Images/Stable.png" alt="" style="opacity: 0;">
+    </div>
+    <div id="allyLumberjack">
+        <img class="Lumberjack" id="bucheronBuild" src="Pack Images/Lumberjack.png" alt="" style="opacity: 0;">
+    </div>
+    <div id="allyGold_mine">
+        <img class="Gold_mine" id="mineBuild" src="Pack Images/Gold_mine.png" alt="" style="opacity: 0;">
+    </div>
+    <div id="allyMill">
+        <img class="Mill" id="fermeBuild" src="Pack Images/Mill.png" alt="" style="opacity: 0;">
+    </div>
+    <nav class="navbar fixed-bottom navbar-light bg-light mur">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-auto" href="#">Portrait</a>
+            <a class="navbar-brand mx-auto" href="#">Status</a>
+            <table>
+                <tr>
+                    <td><img src="Pack Images/Caserne.jpg" alt="Caserne" id="Caserne" title="Caserne"></td>
+                    <td><img src="Pack Images/Archerie.jpg" alt="Archerie" id="Archerie" title="Archerie"> </td>
+                    <td><img src="Pack Images/Ecurie.jpg" alt="Ecurie" id="Ecurie" title="Ecurie"> </td>
+                </tr>
+                <tr>
+                    <td><img src="Pack Images/Bucheron.jpg" alt="Bucheron" id="Bucheron" title="Bûcheron"></td>
+                    <td><img src="Pack Images/Ferme.png" alt="Ferme" id="Ferme" title="Ferme"></td>
+                    <td><img src="Pack Images/Or.png" alt="Mine d'or" id="Or" title="Mine d'or"></td>
+                </tr>
+            </table>
+        </div>
+    </nav>
+    <div id="BuyModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1" id="BuyTitle">Default</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="BuyDescription">Default</p>
+                    <br>
+                    <table class="mx-auto">
+                        <tr>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: burlywood;">Bois</a>
+                                    <input id="NeedWood" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: goldenrod;">Or</a>
+                                    <input id="NeedGold" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a class="nav-link " href="#"
+                                        style="text-align: center; color: red;">Nourritures</a>
+                                    <input id="NeedFood" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <span>
+                                    <a class="nav-link " href="#"
+                                        style="text-align: center; color:rgb(63, 124, 57) ;">Temps nécessaire</a>
+                                    <input id="NeedTime" type="text" placeholder="00:00" value="00:00" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="BuildButton" type="button" name="Caserne" class="btn btn-success mx-auto" onclick="buyBuilding(this.name)">Construire</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="cleardata()" style="position: absolute; left: 5%; top: 10%;">CLEAR</button>
+    <script type="text/javascript" src="./Ressources/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./Ressources/js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="./Ressources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./Ressources/js/main.js"></script>
+</body>
+
+</html>
