@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="htmlindex">
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel="icon" href="FTH_icon.ico" />
     <title>For The Horde</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./Ressources/css/main_page.css'>
@@ -14,7 +15,9 @@
 </head>
 
 <body>
+    <h1>FOR THE HORDE</h1>
     <ul>
+        <li><a href="game_page.html" target="_self">CONTINUER</a></li>
         <li><a href="game_page.html" target="_self" id="newGame">NOUVEAU JEU</a></li>
         <li><a href="stats.php">STATS</a></li>
         <li><a href="">OPTIONS</a></li>
@@ -24,7 +27,16 @@
     <footer>
         <p>&copy 2021 | For the Horde All Rigths Reserved.</p>
     </footer>
-    <script type="text/javascript" src="./Ressources/js/main.js"></script>
+    <script type="text/javascript" src="./Ressources/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./Ressources/js/bootstrap.min.js"></script>
+    <script>
+        $("#newGame").click(function (e) {
+            localStorage.clear()
+            timerSecondes = 0;
+            timerMinutes = 30;
+            document.location.reload();
+        });
+    </script>
 </body>
 
 </html>

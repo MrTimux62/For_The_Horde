@@ -4,6 +4,10 @@
     font-family: 'MedievalSharp', cursive;
 }
 
+img {
+    cursor: pointer;
+}
+
 body {
     background-image: url('fond.jpg');
     background-size: cover;
@@ -75,6 +79,14 @@ table, tr, td {
     height: 25%;
 }
 
+.ProgressBarracks {
+    z-index: 0;
+    position: absolute;
+    bottom: 45%;
+    left: 45%;
+    width: 200px;
+}
+
 .Archery {
     z-index: 1;
     position: absolute;
@@ -82,6 +94,14 @@ table, tr, td {
     bottom: 13%;
     left: 40%;
     height: 25%;
+}
+
+.ProgressArchery {
+    z-index: 1;
+    position: absolute;
+    bottom: 41%;
+    left: 37%;
+    width: 200px;
 }
 
 .Stable {
@@ -93,6 +113,14 @@ table, tr, td {
     height: 18%;
 }
 
+.ProgressStable {
+    z-index: 1;
+    position: absolute;
+    bottom: 32%;
+    left: 55%;
+    width: 200px;
+}
+
 .Lumberjack {
     z-index: 1;
     position: absolute;
@@ -100,6 +128,14 @@ table, tr, td {
     bottom: 13%;
     left: 28%;
     height: 12%;
+}
+
+.ProgressLumberjack {
+    z-index: 1;
+    position: absolute;
+    bottom: 25%;
+    left: 26%;
+    width: 200px;
 }
 
 .Gold_mine {
@@ -111,6 +147,14 @@ table, tr, td {
     height: 10%;
 }
 
+.ProgressGold_mine {
+    z-index: 0;
+    position: absolute;
+    bottom: 32%;
+    left: 20%;
+    width: 200px;
+}
+
 .Mill {
     z-index: 0;
     position: absolute;
@@ -118,4 +162,12 @@ table, tr, td {
     bottom: 18%;
     left: 33%;
     height: 20%;
+}
+
+.ProgressMill {
+    z-index: 0;
+    position: absolute;
+    bottom: 39%;
+    left: 32%;
+    width: 200px;
 }
