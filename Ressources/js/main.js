@@ -14,6 +14,12 @@ let ecurieTime = 100;
 let timerSecondes = 0;
 let timerMinutes = 30;
 let audioplay = 0;
+let audioplay2 = 0;
+let ennemyUnitsBase = 10
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 $(document).ready(function () {
     updateRessources();
@@ -21,13 +27,16 @@ $(document).ready(function () {
     Ressources();
     unitsRessources();
     saveBuildProgress();
+    setTimeout(() => {
+        ennemyAttack();
+    }, 5000);
 });
 
 if (localStorage.getItem("Bois") == null) {
     localStorage.setItem("Bois", 50);
     localStorage.setItem("Or", 100);
     localStorage.setItem("Nourriture", 100);
-    localStorage.setItem("Unites", 0);
+    localStorage.setItem("Unites", 1);
     updateNav();
 }
 
@@ -506,7 +515,7 @@ $("#bucheronBuild").click(function (e) {
 });
 
 
-$("#btn3").click(function (e) { 
+$("#btn2").click(function (e) {
     e.preventDefault();
     $("#AbandonModal").modal("show");
 });
@@ -527,27 +536,31 @@ $("#htmlmain").click(function (e) {
     }
 });
 
-$("#htmlindex").click(function (e) {
-    if (audioplay == 0) {
-        var audio = new Audio('Pack Sons/index.mp3');
-        audio.loop = true
-        audio.play();
-        audioplay = 1
-    }
-});
-
-$("#btn1").click(function (e) { 
+$("#btn1").click(function (e) {
     e.preventDefault();
+    $("#SoldatsRange").attr("max", Unites);
     $("#AttackModal").modal("show");
 });
 
 function nbSoldats(nb) {
-    $("#nbSoldats").text(nb +" Soldats")
+    $("#nbSoldats").text(nb + " Soldats")
 }
 
-$("#LancementAttaque").click(function (e) { 
-    Unites = Unites - $("#SoldatsRange").val();
+$("#LancementAttaque").click(function (e) {
+    if ($("#SoldatsRange").val() > 0 && $('#allySwordMan').css('left') == null) {
+        Unites = Unites - $("#SoldatsRange").val();
+        allySwordMan($("#SoldatsRange").val());
+        setRessources();
+        updateNav();
+    }
     $("#AttackModal").modal("hide");
-    setRessources();
-    updateNav();
 });
+
+function ennemyAttack() {
+    setInterval(() => {
+        if ($('#ennemiSwordMan').css('left') == null) {
+            ennemiSwordMan(parseInt(ennemyUnitsBase) + getRandomInt(15))
+            ennemyUnitsBase = ennemyUnitsBase + 10;
+        }
+    }, 90000);
+}

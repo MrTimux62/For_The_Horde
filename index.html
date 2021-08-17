@@ -30,6 +30,15 @@
     <script type="text/javascript" src="./Ressources/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="./Ressources/js/bootstrap.min.js"></script>
     <script>
+        let audioplay = 0;
+        $("#htmlindex").click(function (e) {
+            if (audioplay == 0) {
+                var audio = new Audio('Pack Sons/index.mp3');
+                audio.loop = true
+                audio.play();
+                audioplay = 1
+            }
+        });
         $("#newGame").click(function (e) {
             localStorage.clear()
             timerSecondes = 0;
