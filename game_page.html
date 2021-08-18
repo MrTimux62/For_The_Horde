@@ -146,15 +146,15 @@
                     style="max-width: 90px; max-height: 90px;">
             </div>
             <div>
-                <span id="btn1" class="mx-3" style="position: relative; max-height: 200px; cursor: pointer;">
+                <span id="btn1" onclick="lancerAttack()" class="mx-3" style="position: relative; max-height: 200px; cursor: pointer;">
                     <img src="Pack Images/bigbutton.png" alt="">
-                    <div class="fs-3 text-light text-center" style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
+                    <div id="btn1text" class="fs-3 text-light text-center" style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
                         Lancer une attaque
                     </div>
                 </span>
-                <span id="btn2" class="mx-3" style="position: relative; max-height: 200px; cursor: pointer;">
+                <span id="btn2" onclick="retourMenu()" class="mx-3" style="position: relative; max-height: 200px; cursor: pointer;">
                     <img src="Pack Images/bigbutton.png" alt="">
-                    <div class="fs-3 text-light text-center" style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
+                    <div id="btn2text" class="fs-3 text-light text-center" style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
                         Retour au menu
                     </div>
                 </span>
@@ -258,6 +258,100 @@
                     <button id="LancementAttaque" type="button" name="Caserne" class="btn btn-success mx-auto"
                         >A l'attaque !</button>
                     <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="RecrutModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1" >Recruter des unités</h5>
+                </div>
+                <div class="modal-body">
+                    <table class="mx-auto">
+                        <tr>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: burlywood;">Bois</a>
+                                    <input id="NeedWoodRecrut" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: goldenrod;">Or</a>
+                                    <input id="NeedGoldRecrut" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a class="nav-link " href="#"
+                                        style="text-align: center; color: red;">Nourritures</a>
+                                    <input id="NeedFoodRecrut" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <p id="BuyDescription">Choisir le nombres de soldats à recruter</p>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbSoldatsRecrut">0 Soldats</label>
+                    <input type="range" class="form-range" min="0" max="200" oninput="nbSoldatsRecrut(this.value)" value="0" id="SoldatsRangeRecrut">
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="RecrutUnitbtn" type="button" name="Caserne" class="btn btn-success mx-auto"
+                        >Engager</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Bienvenue" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="FTH_icon.ico" alt="">
+                    <p id="BuyDescription" class="fs-2">Bienvenue sur For The Horde !</p>
+                    <br>
+                    <p class="fs-4">Développé par notre équipe</p>
+                    <p class="fs-5">Tim</p>
+                    <p class="fs-5">Cyril</p>
+                    <p class="fs-5">Allan</p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success mx-auto" id="startbutton" data-bs-dismiss="modal">Lancer la partie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Win" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="FTH_icon.ico" alt="">
+                    <p id="BuyDescription" class="fs-2">VICTORY</p>
+                    <br>
+                    <p class="fs-4">Bien joué à toi ! :D</p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success mx-auto" id="winbutton" data-bs-dismiss="modal">Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Lose" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="FTH_icon.ico" alt="">
+                    <p id="BuyDescription" class="fs-2">LOSE</p>
+                    <br>
+                    <p class="fs-4">Tu fera mieux la prochaine fois ;)</p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success mx-auto" id="losebutton" data-bs-dismiss="modal">Menu</button>
                 </div>
             </div>
         </div>

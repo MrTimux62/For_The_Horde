@@ -10,6 +10,7 @@
     <link rel="icon" href="FTH_icon.ico" />
     <title>For The Horde</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="./Ressources/css/bootstrap.min.css" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='./Ressources/css/main_page.css'>
 
 </head>
@@ -27,9 +28,30 @@
     <footer>
         <p>&copy 2021 | For the Horde All Rigths Reserved.</p>
     </footer>
+    <div id="Bienvenue" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="FTH_icon.ico" alt="">
+                    <p id="BuyDescription" class="fs-2">Bienvenue sur For The Horde !</p>
+                    <br>
+                    <p class="fs-4">Développé par notre équipe</p>
+                    <p class="fs-5">Tim</p>
+                    <p class="fs-5">Cyril</p>
+                    <p class="fs-5">Allan</p>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success mx-auto" id="startbutton" data-bs-dismiss="modal">Lancer la partie</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="./Ressources/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="./Ressources/js/bootstrap.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $("#Bienvenue").modal("show");
+        });
         let audioplay = 0;
         $("#htmlindex").click(function (e) {
             if (audioplay == 0) {

@@ -1,16 +1,16 @@
 let Bois, Or, Nourriture, Unites;
 let caserneProgress = 0;
-let caserneTime = 100;
+let caserneTime = 60;
 let archerieProgress = 0;
-let archerieTime = 100;
+let archerieTime = 60;
 let mineProgress = 0;
-let mineTime = 100;
+let mineTime = 60;
 let bucheronProgress = 0;
-let bucheronTime = 100;
+let bucheronTime = 60;
 let fermeProgress = 0;
-let fermeTime = 100;
+let fermeTime = 60;
 let ecurieProgress = 0;
-let ecurieTime = 100;
+let ecurieTime = 60;
 let timerSecondes = 0;
 let timerMinutes = 30;
 let audioplay = 0;
@@ -22,6 +22,11 @@ function getRandomInt(max) {
 }
 
 $(document).ready(function () {
+    $('#Bienvenue').modal({backdrop: 'static', keyboard: false})
+    $("#Bienvenue").modal("show");
+});
+
+$("#startbutton").click(function (e) { 
     updateRessources();
     startTimer();
     Ressources();
@@ -34,8 +39,8 @@ $(document).ready(function () {
 
 if (localStorage.getItem("Bois") == null) {
     localStorage.setItem("Bois", 50);
-    localStorage.setItem("Or", 100);
-    localStorage.setItem("Nourriture", 100);
+    localStorage.setItem("Or", 50);
+    localStorage.setItem("Nourriture", 50);
     localStorage.setItem("Unites", 1);
     updateNav();
 }
@@ -106,6 +111,18 @@ function saveBuildProgress() {
 }
 
 function setRessources() {
+    if (Bois > 300) {
+        Bois = 300
+    }
+    if (Or > 300) {
+        Or = 300
+    }
+    if (Nourriture > 300) {
+        Nourriture = 300
+    }
+    if (Unites > 200) {
+        Unites = 200
+    }
     if (localStorage.getItem("Bois") != null) {
         localStorage.setItem("Bois", Bois)
     }
@@ -137,8 +154,8 @@ $('#Caserne').click(function (e) {
         $("#BuildButton").attr("name", "Caserne")
         $("#BuyDescription").text("Augmente la production de troupes et permet leurs achats")
         $("#NeedWood").val(25)
-        $("#NeedGold").val(100)
-        $("#NeedFood").val(0)
+        $("#NeedGold").val(25)
+        $("#NeedFood").val(25)
         $("#NeedTime").val("01:40")
         $("#BuyModal").modal("show");
     }
@@ -149,10 +166,10 @@ $('#Archerie').click(function (e) {
         $("#BuyTitle").text("Archerie")
         $("#BuildButton").attr("name", "Archerie")
         $("#BuyDescription").text("Permet la production d'archer et donc de + d'unités")
-        $("#NeedWood").val(75)
-        $("#NeedGold").val(50)
-        $("#NeedFood").val(75)
-        $("#NeedTime").val("01:40")
+        $("#NeedWood").val(25)
+        $("#NeedGold").val(25)
+        $("#NeedFood").val(25)
+        $("#NeedTime").val("01:00")
         $("#BuyModal").modal("show");
     }
     modalUpdate();
@@ -162,10 +179,10 @@ $('#Or').click(function (e) {
         $("#BuyTitle").text("Mine d'or")
         $("#BuildButton").attr("name", "Mine")
         $("#BuyDescription").text("Augmente la production d'or")
-        $("#NeedWood").val(75)
-        $("#NeedGold").val(0)
-        $("#NeedFood").val(75)
-        $("#NeedTime").val("01:40")
+        $("#NeedWood").val(25)
+        $("#NeedGold").val(50)
+        $("#NeedFood").val(25)
+        $("#NeedTime").val("01:00")
         $("#BuyModal").modal("show");
     }
     modalUpdate();
@@ -176,9 +193,9 @@ $('#Ecurie').click(function (e) {
         $("#BuildButton").attr("name", "Ecurie")
         $("#BuyDescription").text("Permet la production de chevaux et donc de + d'unités")
         $("#NeedWood").val(25)
-        $("#NeedGold").val(50)
-        $("#NeedFood").val(75)
-        $("#NeedTime").val("01:40")
+        $("#NeedGold").val(25)
+        $("#NeedFood").val(25)
+        $("#NeedTime").val("01:00")
         $("#BuyModal").modal("show");
     }
     modalUpdate();
@@ -188,10 +205,10 @@ $('#Bucheron').click(function (e) {
         $("#BuyTitle").text("Bucheron")
         $("#BuildButton").attr("name", "Bucheron")
         $("#BuyDescription").text("Augmente la production de bois")
-        $("#NeedWood").val(0)
-        $("#NeedGold").val(100)
-        $("#NeedFood").val(50)
-        $("#NeedTime").val("01:40")
+        $("#NeedWood").val(50)
+        $("#NeedGold").val(25)
+        $("#NeedFood").val(25)
+        $("#NeedTime").val("01:00")
         $("#BuyModal").modal("show");
     }
     modalUpdate();
@@ -201,10 +218,10 @@ $('#Ferme').click(function (e) {
         $("#BuyTitle").text("Ferme")
         $("#BuildButton").attr("name", "Ferme")
         $("#BuyDescription").text("Augmente la production de nourritures")
-        $("#NeedWood").val(50)
-        $("#NeedGold").val(100)
-        $("#NeedFood").val(0)
-        $("#NeedTime").val("01:40")
+        $("#NeedWood").val(25)
+        $("#NeedGold").val(25)
+        $("#NeedFood").val(50)
+        $("#NeedTime").val("01:00")
         $("#BuyModal").modal("show");
     }
     modalUpdate();
@@ -457,7 +474,7 @@ function Ressources() {
             updateNav();
         }
         modalUpdate();
-    }, 3000);
+    }, 6000);
 }
 function unitsRessources() {
     setInterval(() => {
@@ -467,7 +484,7 @@ function unitsRessources() {
             setRessources();
             updateNav();
         }
-    }, 8000);
+    }, 10000);
 }
 
 $(".Base1").click(function (e) {
@@ -475,6 +492,10 @@ $(".Base1").click(function (e) {
     var audio = new Audio('Pack Sons/base.mp3');
     audio.play();
     $("#SelectImg").attr("src", "Pack Images/Chateau Bleu.png");
+    $("#btn1").attr("onclick", "lancerAttack()")
+    $("#btn1text").text("Lancer une attaque")
+    $("#btn2").attr("onclick", "retourMenu()")
+    $("#btn2text").text("Retour au menu")
 });
 
 $("#caserneBuild").click(function (e) {
@@ -482,6 +503,10 @@ $("#caserneBuild").click(function (e) {
     var audio = new Audio('Pack Sons/caserne.mp3');
     audio.play();
     $("#SelectImg").attr("src", "Pack Images/Barracks.png");
+    $("#btn1").attr("onclick", "recrutUnit()")
+    $("#btn1text").text("Recruter des unités")
+    $("#btn2").attr("onclick", "repairCaserne()")
+    $("#btn2text").text("Réparer")
 });
 $("#archerieBuild").click(function (e) {
     e.preventDefault();
@@ -514,10 +539,19 @@ $("#bucheronBuild").click(function (e) {
     $("#SelectImg").attr("src", "Pack Images/Lumberjack.png");
 });
 
-
-$("#btn2").click(function (e) {
-    e.preventDefault();
+function retourMenu() {
     $("#AbandonModal").modal("show");
+}
+
+$("#winbutton").click(function (e) { 
+    e.preventDefault();
+    cleardata();
+    redirectIndex();
+});
+$("#losebutton").click(function (e) { 
+    e.preventDefault();
+    cleardata();
+    redirectIndex();
 });
 
 function redirectIndex() {
@@ -527,7 +561,7 @@ function redirectIndex() {
 
 // PARTIE MUSIQUE AMBIANCE
 
-$("#htmlmain").click(function (e) {
+$("#htmlmain").click(function () {
     if (audioplay == 0) {
         var audio = new Audio('Pack Sons/ambiant.mp3');
         audio.loop = true
@@ -536,18 +570,58 @@ $("#htmlmain").click(function (e) {
     }
 });
 
-$("#btn1").click(function (e) {
-    e.preventDefault();
+function lancerAttack() {
     $("#SoldatsRange").attr("max", Unites);
+    $("#nbSoldats").text("0 Soldats")
+    $("#SoldatsRange").val(0);
     $("#AttackModal").modal("show");
-});
-
-function nbSoldats(nb) {
-    $("#nbSoldats").text(nb + " Soldats")
 }
 
-$("#LancementAttaque").click(function (e) {
+function recrutUnit() {
+    $("#SoldatsRangeRecrut").attr("max", 200);
+    $("#nbSoldatsRecrut").text("0 Soldats")
+    $("#NeedGoldRecrut").val(0);
+    $("#NeedFoodRecrut").val(0);
+    $("#SoldatsRangeRecrut").val(0);
+    $("#RecrutModal").modal("show");
+}
+
+function nbSoldats(nb) {
+    $("#nbSoldats").text(nb + " Soldats");
+}
+function nbSoldatsRecrut(nb) {
+    $("#nbSoldatsRecrut").text(nb + " Soldats");
+    $("#NeedGoldRecrut").val(nb);
+    if (Or >= $("#NeedGoldRecrut").val()) {
+        $("#NeedGoldRecrut").css("color", "green");
+    } else {
+        $("#NeedGoldRecrut").css("color", "red");
+    }
+    if (Nourriture >= $("#NeedFoodRecrut").val()) {
+        $("#NeedFoodRecrut").css("color", "green");
+    } else {
+        $("#NeedFoodRecrut").css("color", "red");
+    }
+    $("#NeedFoodRecrut").val(nb);
+}
+
+$("#RecrutUnitbtn").click(function (e) { 
+    e.preventDefault();
+    if (parseInt($("#nbSoldatsRecrut").text()) + Unites <= 200 && $("#NeedGoldRecrut").val() <= Or && $("#NeedFoodRecrut").val() <= Nourriture && caserneProgress >= caserneTime) {
+        Unites = Unites + parseInt($("#nbSoldatsRecrut").text())
+        Or = Or - $("#NeedGoldRecrut").val();
+        Nourriture = Nourriture - $("#NeedFoodRecrut").val();
+        $("#RecrutModal").modal("hide");
+        setRessources();
+        updateNav();
+    }
+    
+});
+
+$("#LancementAttaque").click(function () {
     if ($("#SoldatsRange").val() > 0 && $('#allySwordMan').css('left') == null) {
+        var audio = new Audio('Pack Sons/allyspawn.mp3');
+        audio.play();
         Unites = Unites - $("#SoldatsRange").val();
         allySwordMan($("#SoldatsRange").val());
         setRessources();
@@ -559,8 +633,10 @@ $("#LancementAttaque").click(function (e) {
 function ennemyAttack() {
     setInterval(() => {
         if ($('#ennemiSwordMan').css('left') == null) {
+            var audio = new Audio('Pack Sons/ennemispawn.mp3');
+            audio.play();
             ennemiSwordMan(parseInt(ennemyUnitsBase) + getRandomInt(15))
-            ennemyUnitsBase = ennemyUnitsBase + 10;
+            ennemyUnitsBase = ennemyUnitsBase + 6;
         }
-    }, 90000);
+    }, 100000);
 }
