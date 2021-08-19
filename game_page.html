@@ -50,9 +50,6 @@
         <form class="form-inline">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: green;">Moral Haut</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#" style="color: whitesmoke;" id="UnitsNav">Unités 0/200</a>
                 </li>
             </ul>
@@ -146,19 +143,23 @@
                     style="max-width: 90px; max-height: 90px;">
             </div>
             <div>
-                <span id="btn1" onclick="lancerAttack()" class="mx-3" style="position: relative; max-height: 200px; cursor: pointer;">
+                <span id="btn1" onclick="lancerAttack()" class="mx-3"
+                    style="position: relative; max-height: 200px; cursor: pointer;">
                     <img src="Pack Images/bigbutton.png" alt="">
-                    <div id="btn1text" class="fs-3 text-light text-center" style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
+                    <div id="btn1text" class="fs-3 text-light text-center"
+                        style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
                         Lancer une attaque
                     </div>
                 </span>
-                <span id="btn2" onclick="retourMenu()" class="mx-3" style="position: relative; max-height: 200px; cursor: pointer;">
+                <span id="btn2" onclick="retourMenu()" class="mx-3"
+                    style="position: relative; max-height: 200px; cursor: pointer;">
                     <img src="Pack Images/bigbutton.png" alt="">
-                    <div id="btn2text" class="fs-3 text-light text-center" style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
+                    <div id="btn2text" class="fs-3 text-light text-center"
+                        style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
                         Retour au menu
                     </div>
                 </span>
-                
+
             </div>
             <table>
                 <tr>
@@ -228,6 +229,60 @@
             </div>
         </div>
     </div>
+    <div id="BoostModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1" id="BoostTitle">Default</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="BoostDescription">Default</p>
+                    <br>
+                    <table class="mx-auto">
+                        <tr>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: burlywood;">Bois</a>
+                                    <input id="BoostNeedWood" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: goldenrod;">Or</a>
+                                    <input id="BoostNeedGold" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a class="nav-link " href="#"
+                                        style="text-align: center; color: red;">Nourritures</a>
+                                    <input id="BoostNeedFood" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <span>
+                                    <a class="nav-link " href="#"
+                                        style="text-align: center; color:rgb(63, 124, 57) ;">Durée</a>
+                                    <input id="BoostTime" type="text" placeholder="00:00" value="01:00" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="BoostButton" type="button" name="Ferme" class="btn btn-success mx-auto"
+                        onclick="BoostBuilding(this.name)">Boost</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="AbandonModal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered text-center">
             <div class="modal-content">
@@ -246,17 +301,18 @@
         <div class="modal-dialog modal-dialog-centered text-center">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto fs-1" >Lancement d'une attaque</h5>
+                    <h5 class="modal-title mx-auto fs-1">Lancement d'une attaque</h5>
                 </div>
                 <div class="modal-body">
                     <p id="BuyDescription">Choisir le nombres de soldats à envoyer</p>
                     <br>
                     <label for="customRange1" class="form-label" id="nbSoldats">0 Soldats</label>
-                    <input type="range" class="form-range" min="0" max="200" oninput="nbSoldats(this.value)" value="0" id="SoldatsRange">
+                    <input type="range" class="form-range" min="0" max="200" oninput="nbSoldats(this.value)" value="0"
+                        id="SoldatsRange">
                 </div>
                 <div class="modal-footer text-center">
-                    <button id="LancementAttaque" type="button" name="Caserne" class="btn btn-success mx-auto"
-                        >A l'attaque !</button>
+                    <button id="LancementAttaque" type="button" name="Caserne" class="btn btn-success mx-auto">A
+                        l'attaque !</button>
                     <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
                 </div>
             </div>
@@ -266,7 +322,7 @@
         <div class="modal-dialog modal-dialog-centered text-center">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto fs-1" >Recruter des unités</h5>
+                    <h5 class="modal-title mx-auto fs-1">Recruter des unités</h5>
                 </div>
                 <div class="modal-body">
                     <table class="mx-auto">
@@ -298,11 +354,111 @@
                     <p id="BuyDescription">Choisir le nombres de soldats à recruter</p>
                     <br>
                     <label for="customRange1" class="form-label" id="nbSoldatsRecrut">0 Soldats</label>
-                    <input type="range" class="form-range" min="0" max="200" oninput="nbSoldatsRecrut(this.value)" value="0" id="SoldatsRangeRecrut">
+                    <input type="range" class="form-range" min="0" max="200" oninput="nbSoldatsRecrut(this.value)"
+                        value="0" id="SoldatsRangeRecrut">
                 </div>
                 <div class="modal-footer text-center">
-                    <button id="RecrutUnitbtn" type="button" name="Caserne" class="btn btn-success mx-auto"
-                        >Engager</button>
+                    <button id="RecrutUnitbtn" type="button" name="Caserne"
+                        class="btn btn-success mx-auto">Engager</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="BuyRessourcesModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1">Acheter des ressources</h5>
+                </div>
+                <div class="modal-body">
+                    <table class="mx-auto">
+                        <tr>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: goldenrod;">Or</a>
+                                    <input id="BuyGoldNeed" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbWoodBuy">0 Bois</label>
+                    <input type="range" class="form-range" min="0" max="300" oninput="nbWoodBuy(this.value)" value="0"
+                        id="WoodBuyRange">
+                    <br>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbFoodBuy">0 Nourritures</label>
+                    <input type="range" class="form-range" min="0" max="300" oninput="nbFoodBuy(this.value)" value="0"
+                        id="FoodBuyRange">
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="BuyRessources" type="button" name="Caserne"
+                        class="btn btn-success mx-auto">Acheter</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="SellWoodModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1">Vendre du Bois</h5>
+                </div>
+                <div class="modal-body">
+                    <table class="mx-auto">
+                        <tr>
+                            <td>
+                                <span>
+                                    <a class="nav-link" href="#" style="text-align: center; color: burlywood;">Bois</a>
+                                    <input id="NeedWoodSell" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbGoldWood">0 Or</label>
+                    <input type="range" class="form-range" min="0" max="300" oninput="nbSellWood(this.value)" value="0"
+                        id="GoldWood">
+                    <br>
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="SellWood" type="button" name="Caserne" class="btn btn-success mx-auto">Vendre</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="SellFoodModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1">Vendre de la Nourritures</h5>
+                </div>
+                <div class="modal-body">
+                    <table class="mx-auto">
+                        <tr>
+                            <td>
+                                <span>
+                                    <a class="nav-link " href="#"
+                                        style="text-align: center; color: red;">Nourritures</a>
+                                    <input id="NeedFoodSell" type="text" placeholder="0" value="0" disabled
+                                        style="text-align: center; color:rgb(255, 0, 0)">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbGoldFood">0 Or</label>
+                    <input type="range" class="form-range" min="0" max="300" oninput="nbSellFood(this.value)" value="0"
+                        id="GoldFood">
+                    <br>
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="SellFood" type="button" name="Caserne" class="btn btn-success mx-auto">Vendre</button>
                     <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
                 </div>
             </div>
@@ -321,7 +477,8 @@
                     <p class="fs-5">Allan</p>
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-success mx-auto" id="startbutton" data-bs-dismiss="modal">Lancer la partie</button>
+                    <button type="button" class="btn btn-success mx-auto" id="startbutton"
+                        data-bs-dismiss="modal">Lancer la partie</button>
                 </div>
             </div>
         </div>
@@ -336,7 +493,8 @@
                     <p class="fs-4">Bien joué à toi ! :D</p>
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-success mx-auto" id="winbutton" data-bs-dismiss="modal">Menu</button>
+                    <button type="button" class="btn btn-success mx-auto" id="winbutton"
+                        data-bs-dismiss="modal">Menu</button>
                 </div>
             </div>
         </div>
@@ -351,7 +509,8 @@
                     <p class="fs-4">Tu fera mieux la prochaine fois ;)</p>
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-success mx-auto" id="losebutton" data-bs-dismiss="modal">Menu</button>
+                    <button type="button" class="btn btn-success mx-auto" id="losebutton"
+                        data-bs-dismiss="modal">Menu</button>
                 </div>
             </div>
         </div>
