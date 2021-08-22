@@ -583,13 +583,13 @@ $(".Base1").click(function (e) {
     $("#SelectImg").attr("src", "Pack Images/Chateau Bleu.png");
     $("#btn1").css("display", "")
     $("#btn2").css("display", "")
-    $("#btn1").attr("onclick", "lancerAttack()")
-    $("#btn1text").text("Lancer une attaque")
+    $("#btn1").attr("onclick", "recrutUnit()")
+    $("#btn1text").text("Recruter des unités")
     $("#btn2").attr("onclick", "retourMenu()")
     $("#btn2text").text("Retour au menu")
 });
 
-$("#caserneBuild").click(function (e) {
+$("#caserneBuild").click(function (e) { //Etape 1 soldat
     e.preventDefault();
     var audio = new Audio('Pack Sons/caserne.mp3');
     audio.play();
@@ -597,17 +597,18 @@ $("#caserneBuild").click(function (e) {
     if (caserneProgress >= caserneTime) {
         $("#btn1").css("display", "")
         $("#btn2").css("display", "")
-        $("#btn1").attr("onclick", "recrutUnit()")
-        $("#btn1text").text("Recruter des unités")
-        $("#btn2").attr("onclick", "repairCaserne()")
-        $("#btn2text").text("Réparer")
+        $("#btn1").attr("onclick", "lancerAttackSoldat()")
+        $("#btn1text").text("Lancer une attaque")
+        $("#btn2").attr("onclick", "retourMenu()")
+        $("#btn2text").text("Retour au menu")
     } else {
         $("#btn1").css("display", "none")
         $("#btn2").css("display", "none")
     }
 
 });
-$("#archerieBuild").click(function (e) {
+
+$("#archerieBuild").click(function (e) { //Etape 1 Archer
     e.preventDefault();
     var audio = new Audio('Pack Sons/archerie.mp3');
     audio.play();
@@ -615,15 +616,33 @@ $("#archerieBuild").click(function (e) {
     if (archerieProgress >= archerieTime) {
         $("#btn1").css("display", "")
         $("#btn2").css("display", "")
-        $("#btn1").attr("onclick", "recrutUnit()")
-        $("#btn1text").text("Recruter des unités")
-        $("#btn2").attr("onclick", "repairArcherie()")
-        $("#btn2text").text("Réparer")
+        $("#btn1").attr("onclick", "lancerAttackArcher()")
+        $("#btn1text").text("Lancer une attaque")
+        $("#btn2").attr("onclick", "retourMenu()")
+        $("#btn2text").text("Retour au menu")
     } else {
         $("#btn1").css("display", "none")
         $("#btn2").css("display", "none")
     }
 });
+$("#ecurieBuild").click(function (e) { //Etape 1 Cavalier
+    e.preventDefault();
+    var audio = new Audio('Pack Sons/ecurie.mp3');
+    audio.play();
+    $("#SelectImg").attr("src", "Pack Images/Stable.png");
+    if (ecurieProgress >= ecurieTime) {
+        $("#btn1").css("display", "")
+        $("#btn2").css("display", "")
+        $("#btn1").attr("onclick", "lancerAttackCavalier()")
+        $("#btn1text").text("Lancer une attaque")
+        $("#btn2").attr("onclick", "retourMenu()")
+        $("#btn2text").text("Retour au menu")
+    } else {
+        $("#btn1").css("display", "none")
+        $("#btn2").css("display", "none")
+    }
+});
+
 $("#mineBuild").click(function (e) {
     e.preventDefault();
     var audio = new Audio('Pack Sons/mine.mp3');
@@ -646,23 +665,6 @@ $("#mineBuild").click(function (e) {
     } else {
         $("#btn1").css("display", "none");
         $("#btn2").css("display", "none");
-    }
-});
-$("#ecurieBuild").click(function (e) {
-    e.preventDefault();
-    var audio = new Audio('Pack Sons/ecurie.mp3');
-    audio.play();
-    $("#SelectImg").attr("src", "Pack Images/Stable.png");
-    if (ecurieProgress >= ecurieTime) {
-        $("#btn1").css("display", "")
-        $("#btn2").css("display", "")
-        $("#btn1").attr("onclick", "recrutUnit()")
-        $("#btn1text").text("Recruter des unités")
-        $("#btn2").attr("onclick", "repairEcurie()")
-        $("#btn2text").text("Réparer")
-    } else {
-        $("#btn1").css("display", "none")
-        $("#btn2").css("display", "none")
     }
 });
 $("#fermeBuild").click(function (e) {
@@ -713,6 +715,7 @@ $("#bucheronBuild").click(function (e) {
         $("#btn2").css("display", "none")
     }
 });
+
 
 function buyRessources() {
     $("#BuyRessourcesModal").modal("show");
@@ -871,11 +874,25 @@ $("#htmlmain").click(function () {
     }
 });
 
-function lancerAttack() {
+function lancerAttackSoldat() { //Etape 2 soldat
     $("#SoldatsRange").attr("max", Unites);
     $("#nbSoldats").text("0 Soldats")
     $("#SoldatsRange").val(0);
-    $("#AttackModal").modal("show");
+    $("#AttackSoldat").modal("show");
+}
+
+function lancerAttackArcher() { //Etape 2 Archer
+    $("#ArcherRange").attr("max", Unites);
+    $("#nbArcher").text("0 Archer")
+    $("#ArcherRange").val(0);
+    $("#AttackArcher").modal("show");
+}
+
+function lancerAttackCavalier() { //Etape 2 Cavalier
+    $("#CavalierRange").attr("max", Unites);
+    $("#nbCavalier").text("0 Cavalier")
+    $("#CavalierRange").val(0);
+    $("#AttackCavalier").modal("show");
 }
 
 function recrutUnit() {
@@ -887,7 +904,7 @@ function recrutUnit() {
     $("#RecrutModal").modal("show");
 }
 
-function nbSoldats(nb) {
+function nbSoldats(nb) { //Etape 4 Soldat
     $("#nbSoldats").text(nb + " Soldats");
 }
 function nbSoldatsRecrut(nb) {
@@ -906,9 +923,47 @@ function nbSoldatsRecrut(nb) {
     $("#NeedFoodRecrut").val(nb);
 }
 
+function nbArcher(nb) { //Etape 4 Archer
+    $("#nbArcher").text(nb + " Archer");
+}
+function nbArcherRecrut(nb) {
+    $("#nbArcherRecrut").text(nb + " Archer");
+    $("#NeedGoldRecrut").val(nb);
+    if (Or >= $("#NeedGoldRecrut").val()) {
+        $("#NeedGoldRecrut").css("color", "green");
+    } else {
+        $("#NeedGoldRecrut").css("color", "red");
+    }
+    if (Nourriture >= $("#NeedFoodRecrut").val()) {
+        $("#NeedFoodRecrut").css("color", "green");
+    } else {
+        $("#NeedFoodRecrut").css("color", "red");
+    }
+    $("#NeedFoodRecrut").val(nb);
+}
+
+function nbCavalier(nb) { //Etape 4 Cavalier
+    $("#nbCavalier").text(nb + " Cavalier");
+}
+function nbCavalierRecrut(nb) {
+    $("#nbCavalierRecrut").text(nb + " Cavalier");
+    $("#NeedGoldRecrut").val(nb);
+    if (Or >= $("#NeedGoldRecrut").val()) {
+        $("#NeedGoldRecrut").css("color", "green");
+    } else {
+        $("#NeedGoldRecrut").css("color", "red");
+    }
+    if (Nourriture >= $("#NeedFoodRecrut").val()) {
+        $("#NeedFoodRecrut").css("color", "green");
+    } else {
+        $("#NeedFoodRecrut").css("color", "red");
+    }
+    $("#NeedFoodRecrut").val(nb);
+}
+
 $("#RecrutUnitbtn").click(function (e) {
     e.preventDefault();
-    if (parseInt($("#nbSoldatsRecrut").text()) + Unites <= 200 && $("#NeedGoldRecrut").val() <= Or && $("#NeedFoodRecrut").val() <= Nourriture && caserneProgress >= caserneTime) {
+    if (parseInt($("#nbSoldatsRecrut").text()) + Unites <= 200 && $("#NeedGoldRecrut").val() <= Or && $("#NeedFoodRecrut").val() <= Nourriture) {
         Unites = Unites + parseInt($("#nbSoldatsRecrut").text())
         Or = Or - $("#NeedGoldRecrut").val();
         Nourriture = Nourriture - $("#NeedFoodRecrut").val();
@@ -916,10 +971,9 @@ $("#RecrutUnitbtn").click(function (e) {
         setRessources();
         updateNav();
     }
-
 });
 
-$("#LancementAttaque").click(function () {
+$("#LancementAttaqueSoldat").click(function () { //Etape 5 soldat
     if ($("#SoldatsRange").val() > 0 && $('#allySwordMan').css('left') == null) {
         var audio = new Audio('Pack Sons/allyspawn.mp3');
         audio.play();
@@ -928,7 +982,31 @@ $("#LancementAttaque").click(function () {
         setRessources();
         updateNav();
     }
-    $("#AttackModal").modal("hide");
+    $("#AttackSoldat").modal("hide");
+});
+
+$("#LancementAttaqueArcher").click(function () { //Etape 5 Archer
+    if ($("#ArcherRange").val() > 0 && $('#allyBowMan').css('left') == null) {
+        var audio = new Audio('Pack Sons/allyspawn.mp3');
+        audio.play();
+        Unites = Unites - $("#ArcherRange").val();
+        allyBowMan($("#ArcherRange").val());
+        setRessources();
+        updateNav();
+    }
+    $("#AttackArcher").modal("hide");
+});
+
+$("#LancementAttaqueCavalier").click(function () { //Etape 5 Cavalier
+    if ($("#CavalierRange").val() > 0 && $('#allyHorse').css('left') == null) {
+        var audio = new Audio('Pack Sons/allyspawn.mp3');
+        audio.play();
+        Unites = Unites - $("#CavalierRange").val();
+        allyHorse($("#CavalierRange").val());
+        setRessources();
+        updateNav();
+    }
+    $("#AttackCavalier").modal("hide");
 });
 
 function ennemyAttack() {
@@ -937,7 +1015,7 @@ function ennemyAttack() {
             var audio = new Audio('Pack Sons/ennemispawn.mp3');
             audio.play();
             ennemiSwordMan(parseInt(ennemyUnitsBase) + getRandomInt(15))
-            ennemyUnitsBase = ennemyUnitsBase + 6;
+            ennemyUnitsBase = parseInt(ennemyUnitsBase) + 6;
         }
     }, 100000);
 }

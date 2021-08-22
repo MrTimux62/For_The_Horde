@@ -143,12 +143,12 @@
                     style="max-width: 90px; max-height: 90px;">
             </div>
             <div>
-                <span id="btn1" onclick="lancerAttack()" class="mx-3"
+                <span id="btn1" onclick="recrutUnit()" class="mx-3"
                     style="position: relative; max-height: 200px; cursor: pointer;">
                     <img src="Pack Images/bigbutton.png" alt="">
                     <div id="btn1text" class="fs-3 text-light text-center"
                         style="width: 100%; position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);">
-                        Lancer une attaque
+                        Recruter des unités
                     </div>
                 </span>
                 <span id="btn2" onclick="retourMenu()" class="mx-3"
@@ -297,7 +297,7 @@
             </div>
         </div>
     </div>
-    <div id="AttackModal" class="modal" tabindex="-1">
+    <div id="AttackSoldat" class="modal" tabindex="-1"> <!-- Etape 3 soldat -->
         <div class="modal-dialog modal-dialog-centered text-center">
             <div class="modal-content">
                 <div class="modal-header">
@@ -311,13 +311,56 @@
                         id="SoldatsRange">
                 </div>
                 <div class="modal-footer text-center">
-                    <button id="LancementAttaque" type="button" name="Caserne" class="btn btn-success mx-auto">A
+                    <button id="LancementAttaqueSoldat" type="button" name="Caserne" class="btn btn-success mx-auto">A
                         l'attaque !</button>
                     <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
     </div>
+    <div id="AttackArcher" class="modal" tabindex="-1"> <!-- Etape 3 Archer -->
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1">Lancement d'une attaque</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="BuyDescription">Choisir le nombres d'archer à envoyer</p>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbArcher">0 Archer</label>
+                    <input type="range" class="form-range" min="0" max="200" oninput="nbArcher(this.value)" value="0"
+                        id="ArcherRange">
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="LancementAttaqueArcher" type="button" name="Caserne" class="btn btn-success mx-auto">A
+                        l'attaque !</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="AttackCavalier" class="modal" tabindex="-1"> <!-- Etape 3 Cavalier -->
+        <div class="modal-dialog modal-dialog-centered text-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto fs-1">Lancement d'une attaque</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="BuyDescription">Choisir le nombres de cavalier à envoyer</p>
+                    <br>
+                    <label for="customRange1" class="form-label" id="nbCavalier">0 Cavalier</label>
+                    <input type="range" class="form-range" min="0" max="200" oninput="nbCavalier(this.value)" value="0"
+                        id="CavalierRange">
+                </div>
+                <div class="modal-footer text-center">
+                    <button id="LancementAttaqueCavalier" type="button" name="Caserne" class="btn btn-success mx-auto">A
+                        l'attaque !</button>
+                    <button type="button" class="btn btn-danger mx-auto" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="RecrutModal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered text-center">
             <div class="modal-content">
@@ -365,6 +408,7 @@
             </div>
         </div>
     </div>
+
     <div id="BuyRessourcesModal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered text-center">
             <div class="modal-content">
